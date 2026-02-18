@@ -2,6 +2,7 @@ import 'dotenv/config'
 import http from 'http';
 import express from "express";
 import { matchRouter } from './src/routes/matches.routes.js';
+import { securityMiddleware } from "./src/arcjet.js"
 import { attachWebSocketServer } from './src/ws/server.js'
 const PORT = Number(process.env.PORT || 8000);
 const HOST = process.env.HOST || '0.0.0.0';
@@ -14,6 +15,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send("Hi! from server");
 })
+app.use(securityMiddleware());
 app.use('/matches', matchRouter);
 
 // Initializing a websocket and  getting access to the broadcast  function. The reason we are getting  access to it is so we can  store it to app.locals.broadcastMatchCreated.
