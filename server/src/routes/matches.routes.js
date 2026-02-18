@@ -54,9 +54,10 @@ matchRouter.post('/', async (req, res) => {
             status: getMatchStatus(startTime, endTime),
         }).returning();
         console.log(event)
-        // if (res.app.locals.broadcastMatchCreated) {
-        //     res.app.locals.broadcastMatchCreated(event);
-        // }
+        if (res.app.locals.broadcastMatchCreated) {
+            res.app.locals.broadcastMatchCreated(event);
+        }
+        // As soon as we send a post request to create a matches. we should be able to see a new event on the client instantly. This happens because the express route finished the database work and then called app locals broadcast match created event which pushed the data through the pipe to the WS client
 
         res.status(201).json({ data: event });
     } catch (e) {
