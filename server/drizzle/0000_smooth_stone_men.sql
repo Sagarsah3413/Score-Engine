@@ -16,7 +16,7 @@ CREATE TABLE "commentary" (
 --> statement-breakpoint
 CREATE TABLE "matches" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"sport" text PRIMARY KEY NOT NULL,
+	"sport" text NOT NULL,
 	"home_team" text NOT NULL,
 	"away_team" text NOT NULL,
 	"status" "match_status" DEFAULT 'scheduled' NOT NULL,

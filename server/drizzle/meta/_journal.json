@@ -8,6 +8,13 @@
       "when": 1771442108863,
       "tag": "0000_smooth_stone_men",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1771446633386,
+      "tag": "0001_perfect_inertia",
+      "breakpoints": true
     }
   ]
 }
